@@ -59,3 +59,12 @@ def iterate_postrans(l: np.float64, x0: np.float64, lim: int) -> tuple[int, np.n
             out[i - 200] = x
 
     return lim, out
+
+def bifurcation_points(min, max, step, n=1000):
+    xs = []
+    ys = []
+    for l in np.arange(min, max, step):
+        iterates = n
+        xs.extend([l] * iterates)
+        ys.extend(iterate_postrans(l, 1/9, iterates)[1])
+    return xs, ys
