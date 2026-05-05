@@ -1,0 +1,282 @@
+\documentclass[12pt]{article}
+
+% ----- packages -----
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{authblk}
+
+\definecolor{myblue}{RGB}{33,84,157}
+\definecolor{instr}{RGB}{200,30,30}   % red, for instructions to be deleted
+
+\hypersetup{colorlinks=true, linkcolor=myblue, urlcolor=myblue, citecolor=myblue}
+
+% Convenience: a command for instructional text. Wrap any guidance to students
+% in \instr{...}; the text will appear in red. DELETE all such commands (or
+% replace them with your own writing) before submitting.
+\newcommand{\instr}[1]{{\color{instr}\itshape #1}}
+
+% ============================================================
+\title{\bfseries [Your Project Title Here]}
+\author{[Your Name]}
+\affil{CPSC/MATH 455 -- Chaos and Discrete Dynamical Systems \\ Gonzaga University}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% ============================================================
+\begin{abstract}
+\instr{Write a concise (150--250 word) summary of the topic, objectives,
+methods, and key findings. State the map you studied, the parameter range
+you considered, the principal techniques you used (Newton's method,
+bifurcation diagrams, Lyapunov exponents, symbolic dynamics, etc.), and the
+main quantitative and qualitative conclusions. The abstract should stand
+alone: a reader who reads only the abstract should know what you did and what
+you found. Avoid citations and detailed equations. \textbf{Delete this
+instruction before submitting.}}
+\end{abstract}
+
+% ============================================================
+\section{Introduction}
+
+\instr{State the problem and the purpose of the study. Provide background
+and context: where does this map (or this question) sit in the broader
+literature on discrete dynamical systems? Cite the original source if the map
+is named after a researcher (Hassell, Ricker, May, Feigenbaum, etc.). Briefly
+preview the structure of the rest of the paper: ``In Section~2 we describe
+the methods used. Section~3 presents our findings on fixed-point structure,
+the period-doubling cascade, and the Lyapunov exponent. Section~4 interprets
+these findings in light of standard theory. We conclude in Section~5.''
+Aim for roughly 200--400 words. \textbf{Delete this instruction before submitting.}}
+
+% ============================================================
+\section{Methods}
+
+\instr{Describe the analytical and computational tools used. State the map
+explicitly with its formula, domain, and parameter range. Include the
+relevant equations: definitions of fixed points, the formula for the
+multiplier of a periodic cycle, the Lyapunov exponent definition, the
+Schwarzian derivative formula, and so on. Describe your computational
+algorithms: how you generated the bifurcation diagram (number of parameter
+samples, transient length, plotting length), how you computed the Lyapunov
+exponent (orbit length, starting point, transient discarded), and how you
+located periodic points or super-stable parameters (Newton's method with
+seeds and convergence criteria). State the software environment you used
+(Python with NumPy and Matplotlib, MATLAB, Mathematica). Pseudocode or
+flowcharts are welcome for non-trivial routines. Aim for roughly 300--500
+words. \textbf{Delete this instruction before submitting.}}
+
+% ============================================================
+\section{Results}
+
+\instr{Present your findings, organized so that a reader can follow the
+logical progression from the geometry of the map, to fixed points, to
+bifurcations, to orbit diagrams and Lyapunov spectra, to symbolic dynamics
+and conjugacy. The subsections below correspond to the eleven required
+analyses in the project guidelines. Adjust the headings to fit your map and
+your story, but address each item somewhere in this section. Use figures,
+tables, and equations liberally and refer to them in the text (e.g.
+``Figure~\ref{fig:bif} shows\ldots''). Aim for roughly 1{,}000--1{,}500 words
+across all subsections. \textbf{Delete this instruction before submitting.}}
+
+% ----- 1. The map and its phase space -----
+\subsection{The map and its phase space}
+
+\instr{State the map, its domain, and the role of the bifurcation parameter.
+Describe the geometric features of the graph: monotonicity, location and
+character of any critical points, whether the map is unimodal, smooth or
+piecewise, and any symmetries. Include a plot of the graph $y = F(x)$ at a
+representative parameter value with the diagonal $y = x$ overlaid.
+\textbf{Delete this instruction before submitting.}}
+
+% ----- 2. Time series and cobweb analysis -----
+\subsection{Time series and cobweb analysis}
+
+\instr{Produce time-series plots ($x_n$ versus $n$) and graphical (cobweb)
+iterations for representative parameter values drawn from the periodic
+regime, near the accumulation point, and in the chaotic regime. Use these
+plots to motivate the analysis that follows: ``At low parameter values we
+see convergence to a fixed point; near $a = a_*$ the orbit visibly
+period-doubles; at $a = a_{\text{chaos}}$ orbits appear to fill an interval.''
+\textbf{Delete this instruction before submitting.}}
+
+% ----- 3. Fixed points and stability -----
+\subsection{Fixed points and their stability}
+
+\instr{Find all fixed points analytically (or numerically when closed forms
+are unavailable). Classify each as attracting, repelling, or neutral by
+computing the multiplier $F'(\bar x)$ and comparing to $1$ in absolute value.
+If a fixed point is neutral, determine whether it is weakly attracting or
+weakly repelling by examining higher-order terms. Describe how the
+fixed-point structure changes as the bifurcation parameter varies (where
+fixed points are born, where they exchange stability, where they collide).
+\textbf{Delete this instruction before submitting.}}
+
+% ----- 4. Periodic points and stability of cycles -----
+\subsection{Periodic points and stability of cycles}
+
+\instr{Locate cycles of low period---at minimum, cycles of period 2, 3, and
+4---and analyze their stability using the derivative of the appropriate
+iterate of $F$. The multiplier of a period-$n$ cycle through points
+$x_0, x_1, \dots, x_{n-1}$ is $\prod_{j=0}^{n-1} F'(x_j)$. If your map admits
+a closed-form analysis of the period-2 cycle (this is rare but happens for
+$Q_c$, $F_c$, and a few others), include it.
+\textbf{Delete this instruction before submitting.}}
+
+% ----- 5. Bifurcation analysis and the period-doubling cascade -----
+\subsection{Bifurcation analysis and the period-doubling cascade}
+
+\instr{Identify the bifurcations the map undergoes as the parameter varies.
+Locate (analytically or numerically) at least the first four
+period-doubling bifurcation values $b_1, b_2, b_3, b_4, \dots$ (more if you
+can). From these, estimate the Feigenbaum constant
+$\delta = \lim_{n \to \infty} (b_n - b_{n-1})/(b_{n+1} - b_n)$. Compare your
+estimate to the universal value $\delta \approx 4.6692$ and comment on what
+this comparison suggests about the universality class your map belongs to.
+\textbf{If your map does not exhibit a period-doubling cascade}---for
+example, the skewed tent map---explain why and substitute a discussion of
+the appropriate alternative route to chaos.
+\textbf{Delete this instruction before submitting.}}
+
+% ----- 6. Orbit diagram -----
+\subsection{Orbit (bifurcation) diagram}
+
+\instr{Generate the orbit diagram over a parameter range that contains the
+full cascade and the chaotic region. Discuss the principal features: the
+period-doubling cascade, the accumulation point, the chaotic bands and their
+mergings, and any periodic windows (in particular, the period-3 window if
+present). Annotate the diagram with the bifurcation values from
+Section~3.5 if possible.
+\textbf{Delete this instruction before submitting.}}
+
+% Example figure placeholder; replace with your actual figure.
+% \begin{figure}[h]
+%   \centering
+%   \includegraphics[width=0.85\linewidth]{your_bif_diagram.pdf}
+%   \caption{Bifurcation diagram for [your map] showing the
+%   period-doubling cascade and the chaotic regime.}
+%   \label{fig:bif}
+% \end{figure}
+
+% ----- 7. Lyapunov exponents -----
+\subsection{Lyapunov exponents}
+
+\instr{Compute the Lyapunov exponent $\lambda(a)$ as a function of the
+bifurcation parameter $a$ and plot it alongside (or aligned with) your
+orbit diagram. Discuss what the sign of $\lambda$ tells you, where $\lambda$
+crosses zero, and how the Lyapunov plot corroborates---and refines---the
+picture given by the orbit diagram. How well do the zeros of $\lambda(a)$
+correspond to the bifurcation values you identified?
+\textbf{Be careful with your language}: a positive Lyapunov exponent is a
+strong indicator of sensitive dependence on initial conditions, but is not,
+by itself, a definition of chaos.
+\textbf{Delete this instruction before submitting.}}
+
+% ----- 8. Histograms -----
+\subsection{Histograms (frequency distributions)}
+
+\instr{For at least two parameter values in the chaotic regime, generate
+histograms of long orbits and discuss their qualitative features (peaks,
+gaps, support). Address the limitations of histograms: how does bin width
+affect what you see, and what can a histogram suggest but not prove about
+periodicity or ergodicity?
+\textbf{Delete this instruction before submitting.}}
+
+
+% ----- 10. Schwarzian derivative -----
+\subsection{Schwarzian derivative}
+
+\instr{Compute the Schwarzian derivative
+\[
+SF(x) \;=\; \frac{F'''(x)}{F'(x)} - \frac{3}{2}\!\left(\frac{F''(x)}{F'(x)}\right)^{\!2}
+\]
+where $F$ is differentiable enough for it to make sense. Determine whether
+$SF < 0$ on the relevant part of the domain and discuss the consequences. In
+particular, if $SF < 0$, Singer's theorem bounds the number of attracting
+cycles and constrains where they can live. \textbf{If your map is not smooth
+enough for $SF$ to be defined}---for example, the cusp map or the skewed
+tent map---discuss this.
+\textbf{Delete this instruction before submitting.}}
+
+% ----- 11. Creative element -----
+\subsection{A creative element}
+
+\instr{Pose and answer at least one question about your map that was not
+explicitly addressed in class. Examples: comparing two histograms
+quantitatively (Kolmogorov--Smirnov test, mean and variance, KL divergence);
+investigating the density of periodic windows in the chaotic region;
+numerically estimating the topological entropy; exploring the fractal
+structure of the bifurcation diagram (box-counting dimension); comparing
+your map to a related map from the literature (e.g.\ Ricker vs.\ Hassell,
+or quadratic vs.\ logistic). The point of this section is to demonstrate
+independent thinking---there is no single ``right'' question to ask.
+\textbf{Delete this instruction before submitting.}}
+
+% ============================================================
+\section{Discussion}
+
+\instr{Interpret your results. What do they tell you about the dynamics of
+the map? How do your findings compare with general theory (Sharkovskii's
+theorem on the ordering of periods, Singer's theorem on attracting cycles,
+Devaney's definition of chaos, Li--Yorke's theorem on period~3 implying
+chaos, Feigenbaum's universality)? How do they compare with other maps
+studied in class? Address the limitations of your analysis: where did
+double precision give out, where were the seeds for Newton's method
+unreliable, where did transients confound the histograms? Suggest
+directions for further work. Aim for roughly 300--500 words.
+\textbf{Delete this instruction before submitting.}}
+
+% ============================================================
+\section{Conclusion and Future Work}
+
+\instr{Summarize the main findings of the report in 150--300 words. Point
+to extensions or open questions: ``A natural next step would be\ldots,'' or
+``It would be interesting to investigate whether\ldots'' Avoid introducing
+new results in this section---it should crystallize what you have already
+established.
+\textbf{Delete this instruction before submitting.}}
+
+% ============================================================
+% References
+% Use either a manual bibliography (as below) or BibTeX/biber.
+% A consistent style is required; the example below uses a numerical
+% bracket style.
+\begin{thebibliography}{99}
+
+\bibitem{devaney}
+R.~L.\ Devaney, \emph{An Introduction to Chaotic Dynamical Systems}, 3rd ed.,
+CRC Press, 2022.
+
+\bibitem{alligood}
+K.~T.\ Alligood, T.~D.\ Sauer, and J.~A.\ Yorke, \emph{Chaos: An Introduction
+to Dynamical Systems}, Springer, 1996.
+
+\bibitem{peitgen}
+H.-O.\ Peitgen, H.\ J\"urgens, and D.\ Saupe, \emph{Chaos and Fractals: New
+Frontiers of Science}, 2nd ed., Springer, 2004.
+
+% \instr{Add additional references for any sources you cite---original
+% research papers, software documentation, textbook chapters. Use a
+% consistent style throughout. \textbf{Delete this instruction before
+% submitting.}}
+
+\end{thebibliography}
+
+% ============================================================
+\appendix
+\section{Code listings (optional)}
+
+\instr{Include any code, lengthy derivations, or supplementary figures here.
+The submitted code archive is the primary deliverable for reproducibility;
+the appendix is for selected listings that the reader might want to consult
+without leaving the document. \textbf{Delete this instruction before
+submitting, or remove this appendix entirely if you have no supplementary
+material.}}
+
+\end{document}
