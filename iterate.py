@@ -6,9 +6,17 @@ def h(l: np.float64, x: np.float64) -> np.float64:
     """Hassell's map function."""
     return l * x / np.pow(1 + x, BETA)
 
-def hprime(l: np.float64, x: np.float64):
+def hprime(l: np.float64, x: np.float64) -> np.float64:
     """Derivative of Hassell's map function."""
     return l * (1 + x) ** (-BETA - 1) * (1 + x - BETA * x)
+
+def hprime2(l: np.float64, x: np.float64) -> np.float64:
+    """Second derivative of Hassell's map function."""
+    return BETA * l * (1 + x) ** (-BETA - 2) * ((BETA - 1) * x - 2)
+
+def hprime3(l: np.float64, x: np.float64) -> np.float64:
+    """Third derivative of Hassell map function."""
+    return -BETA * (BETA + 1) * l * (1 + x) ** (-BETA - 3) * ((BETA - 1) * x - 3)
 
 def h_fixed_points(l: np.float64) -> np.float64:
     """Returns the second fixed point of Hassell's map. Only valid for l>=1. At l=1, there is only one fixed point at 0."""
