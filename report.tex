@@ -32,15 +32,9 @@
 
 % ============================================================
 \begin{abstract}
-\instr{Write a concise (150--250 word) summary of the topic, objectives,
-methods, and key findings. State the map you studied, the parameter range
-you considered, the principal techniques you used (Newton's method,
-bifurcation diagrams, Lyapunov exponents, symbolic dynamics, etc.), and the
-main quantitative and qualitative conclusions. The abstract should stand
-alone: a reader who reads only the abstract should know what you did and what
-you found. Avoid citations and detailed equations. \textbf{Delete this
-instruction before submitting.}}
+In this article, we investigate the dynamics and chaotic behavior of the Hassell Population Model: $H(x) = \frac{\lambda x}{\left( x + 1 \right)^\beta}$. We fixed $\beta$ to 10, and varied $\lambda$ from 0 to at least 30, and up to 140 in certain cases. Our primary techniques for analyzing the map included analytical derivatives of the map, creating bifurcation diagrams, and computing the Lyapunov exponent, superstable points, and Feigenbaum constant through numerical techniques. 
 
+We found the map to show a period doubling route to chaotic behavior, with intermittent, brief windows of periodic behavior. The bifurcation diagram showed fractal-like beavior and showed unusual behavior when focusing on points of the orbit very close to 0. We also calculated the Lyapunov exponent across the main parameter range to determine more precisely where and how the chaotic behavior happens. We also used Newton's Method to find superstable points on the period doubling phase, and calculated to a reasonable degree of accuracy the Feigenbaum constant, as well as the accumulation point of our map to a high degree of accuracy.
 
 \end{abstract}
 
@@ -56,6 +50,8 @@ the methods used. Section~3 presents our findings on fixed-point structure,
 the period-doubling cascade, and the Lyapunov exponent. Section~4 interprets
 these findings in light of standard theory. We conclude in Section~5.''
 Aim for roughly 200--400 words. \textbf{Delete this instruction before submitting.}}
+
+We sought to apply the same techniques and methods of analysis that we have covered in class with the Quadratic and Logistic maps to more complicated maps like the Hassell map. The Hassell map is named after its creator, 
 
 % ============================================================
 \section{Methods}
