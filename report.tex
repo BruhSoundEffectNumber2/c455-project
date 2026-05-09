@@ -2,6 +2,7 @@
 
 % ----- packages -----
 \usepackage[margin=1in]{geometry}
+\usepackage{float}
 \usepackage{amsmath, amssymb, amsthm, mathtools}
 \usepackage{graphicx}
 \usepackage{booktabs}
@@ -50,7 +51,7 @@ In Section 2, we will describe some of the methods used during our analysis. In 
 
 Our primary computational tool was Python3.10+, on Windows and Linux systems. We used NumPy to help improve computation, and Matplotlib and Seaborn for graphing and visualization. WolframAlpha was used for several derivations and other analytical calculations.
 
-As described before, the formal equation for the map is:$$H(x) = \frac{\lambda x}{\left( x + 1 \right)^\beta}, \, x \geq 0, \, \lambda \geq 0, \, \beta \geq 0$$ We found the fixed points of the map analytically, by solving for $H(x) = x$. There is always a fixed point at $0$, as well as a second fixed point when $\lambda \geq 1$. The exact position and stability of the fixed points will be covered in detail later.
+We found the fixed points of the map analytically, by solving for $H(x) = x$. There is always a fixed point at $0$, as well as a second fixed point when $\lambda \geq 1$. The exact position and stability of the fixed points will be covered in detail later.
 
 For the Bifurcation diagrams, we iterated the map at least 1200 times, discarding the first 200 transient points on the orbit. We then created two list of $x$ and $y$ points on the diagram, based on $\lambda$ and the orbit. From there, we were easily able to show the two lists as a scatterplot with very low alpha.
 
@@ -72,12 +73,16 @@ across all subsections. \textbf{Delete this instruction before submitting.}}
 % ----- 1. The map and its phase space -----
 \subsection{The map and its phase space}
 
-\instr{State the map, its domain, and the role of the bifurcation parameter.
-Describe the geometric features of the graph: monotonicity, location and
-character of any critical points, whether the map is unimodal, smooth or
-piecewise, and any symmetries. Include a plot of the graph $y = F(x)$ at a
-representative parameter value with the diagonal $y = x$ overlaid.
-\textbf{Delete this instruction before submitting.}}
+As described before, the formal equation for the map is:$$H(x) = \frac{\lambda x}{\left( x + 1 \right)^\beta}, \, x \geq 0, \, \lambda \geq 0, \, \beta \geq 0$$
+
+We set $\beta = 10$, and set the parameter $0 \leq \lambda \leq 140$. The map has exactly 1 critical point at $x = \frac{1}{\beta - 1} = \frac{1}{9}$, and is unimodal when $\lambda > 1$. The map is smooth and continuous, and has no symmetries. The range of the map is bounded based on the value of $\lambda$, and the map is non-negative for all $x \geq 0$. The map asymptotically approaches $0$ as $x \to \infty$. We show an illustration of the map in Figure~\ref{fig:map_l5}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\linewidth]{figures/map_l5.png}
+  \caption{An illustration of the map $H(x)$ with $\lambda = 5$, demonstrating the geometric features of the map.}
+  \label{fig:map_l5}
+\end{figure}
 
 % ----- 2. Time series and cobweb analysis -----
 \subsection{Time series and cobweb analysis}
