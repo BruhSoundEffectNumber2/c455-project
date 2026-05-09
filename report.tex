@@ -41,34 +41,20 @@ We found the map to show a period doubling route to chaotic behavior, with inter
 % ============================================================
 \section{Introduction}
 
-\instr{State the problem and the purpose of the study. Provide background
-and context: where does this map (or this question) sit in the broader
-literature on discrete dynamical systems? Cite the original source if the map
-is named after a researcher (Hassell, Ricker, May, Feigenbaum, etc.). Briefly
-preview the structure of the rest of the paper: ``In Section~2 we describe
-the methods used. Section~3 presents our findings on fixed-point structure,
-the period-doubling cascade, and the Lyapunov exponent. Section~4 interprets
-these findings in light of standard theory. We conclude in Section~5.''
-Aim for roughly 200--400 words. \textbf{Delete this instruction before submitting.}}
+We sought to apply the same techniques and methods of analysis that we have covered in class with the Quadratic and Logistic maps to more complicated maps like the Hassell map. The Hassell map is named after its creator, Michael Hassell, who published the map to model insect populations \cite{hassell}. % TODO: Add more here?
 
-We sought to apply the same techniques and methods of analysis that we have covered in class with the Quadratic and Logistic maps to more complicated maps like the Hassell map. The Hassell map is named after its creator, 
+In Section 2, we will describe some of the methods used during our analysis. In Section 3, we will discuss in detail the results of our analysis and more specific methods used. In Section 4, we will discuss the overall dynamics of the map, as well as their relationship with the overall theory of dynamic systems. Finally, in Section 5, we conclude our analysis and suggest avenues for further research.
 
 % ============================================================
 \section{Methods}
 
-\instr{Describe the analytical and computational tools used. State the map
-explicitly with its formula, domain, and parameter range. Include the
-relevant equations: definitions of fixed points, the formula for the
-multiplier of a periodic cycle, the Lyapunov exponent definition, the
-Schwarzian derivative formula, and so on. Describe your computational
-algorithms: how you generated the bifurcation diagram (number of parameter
-samples, transient length, plotting length), how you computed the Lyapunov
-exponent (orbit length, starting point, transient discarded), and how you
-located periodic points or super-stable parameters (Newton's method with
-seeds and convergence criteria). State the software environment you used
-(Python with NumPy and Matplotlib, MATLAB, Mathematica). Pseudocode or
-flowcharts are welcome for non-trivial routines. Aim for roughly 300--500
-words. \textbf{Delete this instruction before submitting.}}
+Our primary computational tool was Python3.10+, on Windows and Linux systems. We used NumPy to help improve computation, and Matplotlib and Seaborn for graphing and visualization. WolframAlpha was used for several derivations and other analytical calculations.
+
+As described before, the formal equation for the map is:$$H(x) = \frac{\lambda x}{\left( x + 1 \right)^\beta}, \, x \geq 0, \, \lambda \geq 0, \, \beta \geq 0$$ We found the fixed points of the map analytically, by solving for $H(x) = x$. There is always a fixed point at $0$, as well as a second fixed point when $\lambda \geq 1$. The exact position and stability of the fixed points will be covered in detail later.
+
+For the Bifurcation diagrams, we iterated the map at least 1200 times, discarding the first 200 transient points on the orbit. We then created two list of $x$ and $y$ points on the diagram, based on $\lambda$ and the orbit. From there, we were easily able to show the two lists as a scatterplot with very low alpha.
+
+When calculating the Lyapunov exponent, the Schwarzian derivatve, and superstable points using Newton's Method, we used numerical techniques that we will also cover fully in their relevant sections.
 
 % ============================================================
 \section{Results}
@@ -246,6 +232,9 @@ established.
 % A consistent style is required; the example below uses a numerical
 % bracket style.
 \begin{thebibliography}{99}
+
+\bibitem{hassell}
+M.~P.\ Hassell, \emph{Density-Dependence in Single-Species Populations}, Journal of Animal Ecology 44, no. 1 (1975): 283–95. https://doi.org/10.2307/3863.
 
 \bibitem{devaney}
 R.~L.\ Devaney, \emph{An Introduction to Chaotic Dynamical Systems}, 3rd ed.,
