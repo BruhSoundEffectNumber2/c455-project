@@ -241,28 +241,37 @@ by itself, a definition of chaos.
 % ----- 8. Histograms -----
 \subsection{Histograms (frequency distributions)}
 
-\instr{For at least two parameter values in the chaotic regime, generate
-histograms of long orbits and discuss their qualitative features (peaks,
-gaps, support). Address the limitations of histograms: how does bin width
-affect what you see, and what can a histogram suggest but not prove about
-periodicity or ergodicity?
-\textbf{Delete this instruction before submitting.}}
+Our first histogram, Figure \ref{fig:hist_l25}, is for $\lambda = 25$, which is early in the chaotic regime, but still past the accumulation point. There are several disjoint sections of dense points, which matches the expected ranges from the bifurcation diagram. Each section peaks at the ends, especially the leftmost section, which has a very high peak near $0$. This also matches the bifurcation diagram.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\linewidth]{figures/hist_l25.png}
+  \caption{Histogram of $H(x)$ with $\lambda = 25$.}
+  \label{fig:hist_l25}
+\end{figure}
+
+Our second histogram, Figure \ref{fig:hist_l30}, is for $\lambda = 30$, which is later in the chaotic regime. We can see a dense region of points throughout the range. There are two effective regions of similar shape, with a shared peak near $0.4$. The leftmost region still has an extreme peak near $0$, but the rightmost region also has a smaller peak near $1.1$. This again matches the bifurcation diagram, which shows a dense region of points throughout the range, with two main sections and peaks near $0$ and $1.1$.
+
+We note that the histogram is not a proof of density or ergodicity, but it is suggestive of both, as well as chaotic behavior. There are 200 bins in each histogram, which is a reasonable number for 10,000 points, but bin sizes change the seeming density and structure of the histogram, so we must be careful not to over-interpret the results.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\linewidth]{figures/hist_l30.png}
+  \caption{Histogram of $H(x)$ with $\lambda = 30$.}
+  \label{fig:hist_l30}
+\end{figure}
 
 
 % ----- 10. Schwarzian derivative -----
 \subsection{Schwarzian derivative}
 
-\instr{Compute the Schwarzian derivative
+We computed the Schwarzian derivative:
 \[
 SF(x) \;=\; \frac{F'''(x)}{F'(x)} - \frac{3}{2}\!\left(\frac{F''(x)}{F'(x)}\right)^{\!2}
 \]
-where $F$ is differentiable enough for it to make sense. Determine whether
-$SF < 0$ on the relevant part of the domain and discuss the consequences. In
-particular, if $SF < 0$, Singer's theorem bounds the number of attracting
-cycles and constrains where they can live. \textbf{If your map is not smooth
-enough for $SF$ to be defined}---for example, the cusp map or the skewed
-tent map---discuss this.
-\textbf{Delete this instruction before submitting.}}
+for our map, which is possible since our map is at least $C_3$ continuous. We computed the derivatives analytically using WolframAlpha, then computed the Schwarzian derivative numerically across the relevant domain of 0 to 100, far outside the range of the map we investigated. We found every value across multiple values of $\lambda$ to be negative, with it approaching $-\infty$ near the critical point, and asymptotically approaching $0$ from below as $x \to \infty$.
+
+An analyical calculation of the Schwarzian derivative is likely possible, but was outside the scope of our abilities to caclulate easily, and a numerical calculation is sufficient for our purposes. Since $SF < 0$ across the relevant domain, we can apply Singer's theorem, which states that there is at most one attracting cycle, and if it exists, the critical point must be in its immediate basin of attraction. This matches our observations from the bifurcation diagram.
 
 % ----- 11. Creative element -----
 \subsection{A creative element}
