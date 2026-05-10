@@ -175,37 +175,54 @@ $Q_c$, $F_c$, and a few others), include it.
 % ----- 5. Bifurcation analysis and the period-doubling cascade -----
 \subsection{Bifurcation analysis and the period-doubling cascade}
 
-\instr{Identify the bifurcations the map undergoes as the parameter varies.
-Locate (analytically or numerically) at least the first four
-period-doubling bifurcation values $b_1, b_2, b_3, b_4, \dots$ (more if you
-can). From these, estimate the Feigenbaum constant
-$\delta = \lim_{n \to \infty} (b_n - b_{n-1})/(b_{n+1} - b_n)$. Compare your
-estimate to the universal value $\delta \approx 4.6692$ and comment on what
-this comparison suggests about the universality class your map belongs to.
-\textbf{If your map does not exhibit a period-doubling cascade}---for
-example, the skewed tent map---explain why and substitute a discussion of
-the appropriate alternative route to chaos.
-\textbf{Delete this instruction before submitting.}}
+We used a modified version of Newton's method to find precise parameter values for the superstable points of the period-doubling cascade, which occur when the critical point is part of the cycle. From these, we estimated the Feigenbaum constant as well as the accumulation point of the cascade. Our results are shown graphically in Figure~\ref{fig:feigenbaum} and in higher precision in Table~\ref{tab:feigenbaum}. Note that since results are numerical, there may be a small amount of error in the last few digits.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\linewidth]{figures/feigenbaum.png}
+  \caption{Bifurcation diagram for $H(x)$. The green dotted line shows the critical point, the light red dashed lines show the superstable points, and the dark red dashed line shows the accumulation point.}
+  \label{fig:feigenbaum}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{@{}cccccc@{}}
+        \toprule
+        $n$ & $s_n$ & $s_n - s_{n-1}$ & $\frac{s_n - s_{n-1}}{s_{n+1} - s_n}$ \\
+        \midrule
+        1 & 2.8679719907924426 & - & - \\
+        2 & 12.974562513891858 & 10.106590523099415 & - \\
+        3 & 20.866694236673098 & 7.89213172278124 & - \\
+        4 & 23.419637371147722 & 2.5529431344746243 & 3.0913856310416326 \\
+        5 & 24.01926662982537 & 0.5996292586776484 & 4.257535964980401 \\
+        6 & 24.150402535293903 & 0.1311359054685326 & 4.57257878027567 \\
+        7 & 24.178611790422895 & 0.028209255128992083 & 4.648683734075544 \\
+        8 & 24.18465912885283 & 0.006047338429933546 & 4.664738951827122 \\
+        9 & 24.185954546927494 & 0.0012954180746653776 & 4.668252318075497 \\
+        10 & 24.186231997944226 & 0.000277451016732 & 4.668997396093387 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Bifurcation values and Feigenbaum constant estimates for the period-doubling cascade of $H(x)$.}
+    \label{tab:feigenbaum}
+\end{table}
+
+Rounding, our final estimate for the Feigenbaum constant is $\delta \approx 4.669$, which is close to the universal value of $\delta \approx 4.6692$. Numerical techniques and finite precision make it difficult to get more than a few digits of accuracy, but our estimate is consistent with the map belonging to the same universality class as the quadratic and logistic maps.
+
+We calculated the accumulation point of the cascade using the formula $\lambda_\infty = s_n + \frac{s_{n+1} - s_n}{\delta - 1}$, which we found to be $\lambda_\infty \approx 24.18631$. 
 
 % ----- 6. Orbit diagram -----
 \subsection{Orbit (bifurcation) diagram}
 
-\instr{Generate the orbit diagram over a parameter range that contains the
-full cascade and the chaotic region. Discuss the principal features: the
-period-doubling cascade, the accumulation point, the chaotic bands and their
-mergings, and any periodic windows (in particular, the period-3 window if
-present). Annotate the diagram with the bifurcation values from
-Section~3.5 if possible.
-\textbf{Delete this instruction before submitting.}}
+While we discussed the bifurcation diagram and route to choas, we have not discussed the structure of the bifurcation diagram after the accumulation point. Figure~\ref{fig:bif} shows the bifurcation diagram for $\lambda$ values from $0$ to $50$, showing all important regimes of the map.
 
-% Example figure placeholder; replace with your actual figure.
-% \begin{figure}[h]
-%   \centering
-%   \includegraphics[width=0.85\linewidth]{your_bif_diagram.pdf}
-%   \caption{Bifurcation diagram for [your map] showing the
-%   period-doubling cascade and the chaotic regime.}
-%   \label{fig:bif}
-% \end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\linewidth]{figures/bif_0_50.png}
+  \caption{Bifurcation diagram for $H(x)$ with $\lambda$ from $0$ to $50$.}
+  \label{fig:bif}
+\end{figure}
+
+The chaotic regime continues indefinitely past the accumulation point, but there are several periodic windows. Period 6 windwos are the most common, happening at $\lambda \approx 27$ and $\lambda \approx 34$. There is also a period 3 window starting near $\lambda \approx 47$. This window is particularly interesting, as it clearly implies chaotic behavior inherent to the map, which matches the chaotic behavior we see in the bifurcation diagram and in the Lyapunov exponent plot, which we will discuss next. The behavior of the bifurcation diagram remains unchanged past this point, with a mixture of chaotic and periodic behavior.
 
 % ----- 7. Lyapunov exponents -----
 \subsection{Lyapunov exponents}
