@@ -87,13 +87,67 @@ We set $\beta = 10$, and set the parameter $0 \leq \lambda \leq 140$. The map ha
 % ----- 2. Time series and cobweb analysis -----
 \subsection{Time series and cobweb analysis}
 
-\instr{Produce time-series plots ($x_n$ versus $n$) and graphical (cobweb)
-iterations for representative parameter values drawn from the periodic
-regime, near the accumulation point, and in the chaotic regime. Use these
-plots to motivate the analysis that follows: ``At low parameter values we
-see convergence to a fixed point; near $a = a_*$ the orbit visibly
-period-doubles; at $a = a_{\text{chaos}}$ orbits appear to fill an interval.''
-\textbf{Delete this instruction before submitting.}}
+At low parameter values, orbits converge to the fixed point at $0$, which can be seen in Figure~\ref{fig:cobweb_l0-5}. Once $\lambda \ge 1$, orbits converge to the second fixed point, which can be seen in Figure~\ref{fig:cobweb_l5} and Figure~\ref{fig:ts_l5}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\linewidth]{figures/cobweb_l0-5.png}
+  \caption{Cobweb diagram for $H(x)$. X-axis has been truncated for clarity.}
+  \label{fig:cobweb_l0-5}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\linewidth]{figures/cobweb_l5.png}
+  \caption{Cobweb diagram for $H(x)$. A spiral to a fixed point is visible.}
+  \label{fig:cobweb_l5}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\linewidth]{figures/ts_l5.png}
+  \caption{Time series for $H(x)$ with $\lambda = 5$.}
+  \label{fig:ts_l5}
+\end{figure}
+
+As $\lambda$ increases further, orbits take longer to converge as the second fixed point becomes unstable. Figures~\ref{fig:cobweb_l9} and \ref{fig:cobweb_l9-5} show this behavior just before and after the first period-doubling bifurcation, respectively. The periodic behavior is also visible in the time series for $\lambda = 9.5$ in Figure~\ref{fig:ts_l9-5}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\linewidth]{figures/cobweb_l9.png}
+  \caption{Cobweb diagram for $H(x)$. This parameter value is near a bifurcation.}
+  \label{fig:cobweb_l9}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\linewidth]{figures/cobweb_l9-5.png}
+  \caption{Cobweb diagram for $H(x)$. An eventual period-2 cycle is visible.}
+  \label{fig:cobweb_l9-5}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\linewidth]{figures/ts_l9-5.png}
+  \caption{Time series for $H(x)$ with $\lambda = 9.5$.}
+  \label{fig:ts_l9-5}
+\end{figure}
+
+Past this point, the map quickly undergoes a period-doubling cascade, and chaotic behavior is clearly visible by $\lambda = 25$, as shown in Figure~\ref{fig:cobweb_l25} and Figure~\ref{fig:ts_l25}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\linewidth]{figures/cobweb_l25.png}
+  \caption{Cobweb diagram for $H(x)$. Chaotic behavior is visible. Note the denser region of points near $0$.}
+  \label{fig:cobweb_l25}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\linewidth]{figures/ts_l25.png}
+  \caption{Time series for $H(x)$ with $\lambda = 25$.}
+  \label{fig:ts_l25}
+\end{figure}
 
 % ----- 3. Fixed points and stability -----
 \subsection{Fixed points and their stability}
