@@ -233,34 +233,25 @@ The chaotic regime continues indefinitely past the accumulation point, but there
 
 % ----- 7. Lyapunov exponents -----
 \subsection{Lyapunov exponent}
-To compare with the bifurcation diagram, we also computed the Lyapunov exponent for different values of \(\lambda\). We used the derivative of Hassell's map and averaged the log of the absolute value of the derivative over many iterations:
+To compare with the bifurcation diagram, we also computed the Lyapunov exponent for different values of $\lambda$. The formula for the Lyapunov exponent is:
 \[
 L(\lambda)=\frac{1}{N}\sum_{i=1}^{N}\log\left|F'_\lambda(x_i)\right|.
 \]
-The Lyapunov exponent helps show whether nearby starting values stay close together or separate over time. When \(L(\lambda)<0\), nearby points tend to stay closer together, so the behavior is usually stable. This matches the areas of the bifurcation diagram where the orbit settles into a fixed point or a stable orbit.
-When \(L(\lambda)>0\), nearby points tend to drift apart. This is a strong sign of sensitive dependence on initial conditions, which is one of the main indicators of chaotic behavior.
+The Lyapunov exponent helps show whether nearby starting values converge or diverge over time. When $L(\lambda)<0$, nearby points tend to stay closer together, so the behavior is usually stable. This matches the areas of the bifurcation diagram where the orbit settles into a stable orbit.
+When $L(\lambda)>0$, nearby points tend to drift apart. This is a strong sign of sensitive dependence, which is one of the requirements for chaotic behavior.
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=1\linewidth]{figures/big_lyap_exp_150.png}
-  \caption{Bifurcation diagram alongside Lyapunov exponent for $H(x)$. The top graph shows the bifucation diagram previously displayed, and the bottom is the Lyapunov exponent at the same values of \(\lambda\).}
+  \caption{Bifurcation diagram alongside Lyapunov exponent for $H(x)$. The top graph shows the bifucation diagram previously displayed, and the bottom is the Lyapunov exponent at the same values of $\lambda$.}
   \label{fig:big_lyap_exp_150}
 \end{figure}
-As shown in Figure~\ref{fig:big_lyap_exp_150}, the Lyapunov exponent lines up with the main changes in the bifurcation diagram. The first important "bounce" happens near
-\[
-\lambda \approx 9.313,
-\]
-which is where the stable fixed point becomes a period-2 cycle. The next major near-zero values happen near the later period-doubling values, including
-\[
-\lambda \approx 18.91,
-\]
-where the period-4 cycle begins, and about
-\[
-\lambda \approx 22.91,
-\]
-where the period-4 cycle ends and the rapid period doubling begins.
-The Lyapunov graph is useful because some changes are hard to see clearly from the bifurcation diagram alone. As \(\lambda\) increases, the branches get closer together and become harder to separate qualitatively. The Lyapunov exponent makes these transition points easier to identify because it nears zero near bifurcations.
-The graph also shows that the chaotit regime does not necessarily have the same Lyapunov exponent. There are places where the exponent is positive, suggesting sensitive dependence on initial conditions. However, there are also periodic windows where the exponent drops back below zero. This matches the bifurcation diagram, where scattered points sometimes collapse back into a small stable window, normally with a 3-orbit.
-Overall, the Lyapunov exponent supports the pattern shown in the bifurcation diagram. Negative values match stable fixed points and stable cycles, zero values appear near bifurcations, and positive values correspond to regions where the behavior becomes much more sensitive to initial conditions.
+
+As shown in Figure~\ref{fig:big_lyap_exp_150}, the Lyapunov exponent lines up with the main changes in the bifurcation diagram. The first important "bounce" happens at $\lambda \approx 9.313$, which is where the stable fixed point becomes a period-2 cycle. The next major near-zero values happen near the later period-doubling values, including $\lambda \approx 18.91$, where the period-4 cycle begins, and at $\lambda \approx 22.91$, where the period-4 cycle ends.
+
+The Lyapunov graph is useful because it shows bifurcations and chaotic behavior in ways that are difficult to see from the bifurcation diagram alone. As $\lambda$ increases, the branches get closer together and become harder to separate qualitatively. The Lyapunov exponent gives a quantitative measure of stability.
+
+The graph also shows that the chaotic regime does not necessarily have the same Lyapunov exponent. Most areas are positive, showing sensitive dependence. However, it also shows periodic windows where the exponent drops below zero. This matches almos exactly with the bifurcation diagram.
 
 % ----- 8. Histograms -----
 \subsection{Histograms (frequency distributions)}
@@ -336,17 +327,19 @@ unreliable, where did transients confound the histograms? Suggest
 directions for further work. Aim for roughly 300--500 words.
 \textbf{Delete this instruction before submitting.}}
 
-The behavior of rapid period-doubling transitioning into chaos agreed with Feigenbaum's universality as well. Though the exact value varied depending on the conditions we set, feigenbaum's constant made an appearance multiple times in narrowing down where period doubling would occur.
+The behavior of rapid period-doubling transitioning into chaos agreed with Feigenbaum's universality as well. Though the exact value varied depending on the conditions we set. The Feigenbaum constant made an appearance multiple times in narrowing down where period doubling would occur.
 
 Looking in chaotic regimes we see numerous windows of stable period-3 orbits which supports Li-Yorke's theorem on period-3 implying chaos. Prior to chaos we only saw periods that were a power of 2, however after the bifurcation diagram entered chaos we began to see stable orbits that have a period-3 orbit.
 
 
 % ============================================================
 \section{Conclusion and Future Work}
-In this report, we studied Hassell's map and how its long-term behavior changes as \(\lambda\) varies. For \(\beta=10\), the positive fixed point is stable at first, but it loses stability near \(\lambda \approx 9.313\), where the first period-doubling occurs. From the bifurcation diagram, we saw the map move from a stable fixed point to period-2, period-4, and eventually enter a chaotic regime with windows of stable period-3 orbits. 
-The Lyapunov exponent supported this by 'bouncing' near bifurcation values and becoming positive in chaotic regions.
-Our creative element focused on the lower branch of the bifurcation diagram. What first looked like one branch approaching \(0\) was actually a dense collection of smaller branches and bifurcations.
-A natural next step would be to look more closely at the real-world application of Hassell's map in insect population models. It would be interesting to interpret what these fixed points, cycles, and chaotic-looking regions would mean for actual population levels over time.
+
+In this report, we studied Hassell's map and how its long-term behavior changes as $\lambda$ varies. For $\beta=10$, the positive fixed point is stable at first, but it loses stability at $\lambda \approx 9.313$, where the first period-doubling occurs. From the bifurcation diagram, we saw the map move from a stable fixed point to period-2, period-4, and eventually enter a chaotic regime with windows of stable orbits.  The Lyapunov exponent supported this by 'bouncing' near bifurcation values and becoming positive in chaotic regions.
+
+Our creative element focused on the lower branch of the bifurcation diagram. What first looked like one branch approaching $0$ was actually a dense collection of smaller branches and bifurcations. We investigated and found fractal-like behavior when zooming in, supported by the Lyapunov exponent.
+
+A natural next step would be to look more closely at the real-world application of Hassell's map, such as in insect population models. It would be interesting to interpret what these fixed points, cycles, and chaotic-looking regions would mean for actual population levels over time.
 
 % ============================================================
 % References
