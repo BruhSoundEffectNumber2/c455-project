@@ -331,7 +331,9 @@ The behavior of rapid period-doubling transitioning into chaos agreed with Feige
 
 Looking in chaotic regimes we see numerous windows of stable period-3 orbits which supports Li-Yorke's theorem on period-3 implying chaos. Prior to chaos we only saw periods that were a power of 2, however after the bifurcation diagram entered chaos we began to see stable orbits that have a period-3 orbit.
 
+One noticeable limitation of our analysis is that most of our calculations were done using double precision. Though this would not have a noticeable affect early on in the bifurcation diagram it would matter in the later period-doubling regions. In these later ranges, a small difference could lead two branches to merge instead of staying independent.
 
+We also noticed this limitation quantitatively in the Feigenbaum Constant. Our calculated value remained consistent with the known constant up to three decimal points, but afterwards the values diverged.
 % ============================================================
 \section{Conclusion and Future Work}
 
