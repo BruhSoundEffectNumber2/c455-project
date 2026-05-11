@@ -151,26 +151,134 @@ Past this point, the map quickly undergoes a period-doubling cascade, and chaoti
 
 % ----- 3. Fixed points and stability -----
 \subsection{Fixed points and their stability}
-
-\instr{Find all fixed points analytically (or numerically when closed forms
-are unavailable). Classify each as attracting, repelling, or neutral by
-computing the multiplier $F'(\bar x)$ and comparing to $1$ in absolute value.
-If a fixed point is neutral, determine whether it is weakly attracting or
-weakly repelling by examining higher-order terms. Describe how the
-fixed-point structure changes as the bifurcation parameter varies (where
-fixed points are born, where they exchange stability, where they collide).
-\textbf{Delete this instruction before submitting.}}
+For Hassell's map,
+\[
+F_\lambda(x)=\frac{\lambda x}{(1+x)^\beta},
+\]
+fixed points satisfy
+\[
+F_\lambda(x)=x.
+\]
+This gives
+\[
+\frac{\lambda x}{(1+x)^\beta}=x.
+\]
+One fixed point is always
+\[
+\bar{x}=0.
+\]
+For \(x\neq 0\), we can divide by \(x\), giving
+\[
+\frac{\lambda}{(1+x)^\beta}=1.
+\]
+Therefore,
+\[
+(1+x)^\beta=\lambda,
+\]
+so the positive fixed point is
+\[
+\bar{x}=\lambda^{1/\beta}-1.
+\]
+This fixed point only exists when \(\lambda>1\), since otherwise it is not positive. To classify the stability of these fixed points, we compute the derivative:
+\[
+F'_\lambda(x)=
+\frac{\lambda(1+(1-\beta)x)}{(1+x)^{\beta+1}}.
+\]
+At the fixed point \(\bar{x}=0\),
+\[
+F'_\lambda(0)=\lambda.
+\]
+Therefore, \(x=0\) is attracting when
+\[
+|\lambda|<1,
+\]
+repelling when
+\[
+|\lambda|>1,
+\]
+and neutral when
+\[
+|\lambda|=1.
+\]
+Since we are mainly considering positive \(\lambda\), the origin is attracting for \(0<\lambda<1\), neutral at \(\lambda=1\), and repelling for \(\lambda>1\).
+At the positive fixed point
+\[
+\bar{x}=\lambda^{1/\beta}-1,
+\]
+the derivative simplifies to
+\[
+F'_\lambda(\bar{x})
+=
+1-\beta+\beta\lambda^{-1/\beta}.
+\]
+Therefore, this fixed point is attracting when
+\[
+\left|1-\beta+\beta\lambda^{-1/\beta}\right|<1.
+\]
+For \(\beta>2\), this means the positive fixed point is attracting for
+\[
+1<\lambda<\left(\frac{\beta}{\beta-2}\right)^\beta.
+\]
+At
+\[
+\lambda=\left(\frac{\beta}{\beta-2}\right)^\beta,
+\]
+the derivative reaches \(-1\), the fixed point changes from stable to unstable. This is the first period-doubling point: after this, the orbit no longer settles to one value, but instead settles into a 2-orbit. For \(\beta = 10\), this happens at approximately
+\[
+\lambda=\left(\frac{10}{8}\right)^{10}\approx 9.313.
+\]
+So in the bifurcation diagram, the positive fixed point is stable for
+\[
+1<\lambda<9.313,
+\]
+and becomes unstable after that. At \(\lambda\approx 9.313\), the first period-doubling bifurcation occurs.
+The fixed-point structure changes as follows: for \(0<\lambda<1\), only \(x=0\) is stable. At \(\lambda=1\), a positive fixed point is born from the origin. For \(1<\lambda<9.313\), the positive fixed point is attracting and the origin is repelling. At approximately \(\lambda=9.313\), the positive fixed point loses stability and a stable period-2 cycle appears.
 
 % ----- 4. Periodic points and stability of cycles -----
 \subsection{Periodic points and stability of cycles}
-
-\instr{Locate cycles of low period---at minimum, cycles of period 2, 3, and
-4---and analyze their stability using the derivative of the appropriate
-iterate of $F$. The multiplier of a period-$n$ cycle through points
-$x_0, x_1, \dots, x_{n-1}$ is $\prod_{j=0}^{n-1} F'(x_j)$. If your map admits
-a closed-form analysis of the period-2 cycle (this is rare but happens for
-$Q_c$, $F_c$, and a few others), include it.
-\textbf{Delete this instruction before submitting.}}
+Periodic points are points that return to themselves after repeated iteration of the map. A point has period \(n\) if
+\[
+F_\lambda^n(x)=x,
+\]
+but
+\[
+F_\lambda^k(x)\neq x
+\]
+for all smaller positive integers \(k<n\).
+For Hassell's map, exact formulas for higher-period cycles are difficult to obtain, so I located cycles numerically. The stability of a period-\(n\) cycle
+\[
+x_0,x_1,\dots,x_{n-1}
+\]
+is determined using the multiplier
+\[
+\mu=\prod_{j=0}^{n-1}F'_\lambda(x_j).
+\]
+The cycle is attracting if
+\[
+|\mu|<1,
+\]
+repelling if
+\[
+|\mu|>1,
+\]
+and neutral if
+\[
+|\mu|=1.
+\]
+Using
+\[
+F'_\lambda(x)=
+\frac{\lambda(1+(1-\beta)x)}{(1+x)^{\beta+1}},
+\]
+the multiplier for each detected cycle can be computed by multiplying the derivative at each point of the cycle.
+The first major periodic behavior occurs when the positive fixed point loses stability. For \(\beta=10\), this happens near
+\[
+\lambda\approx 9.313.
+\]
+At this value, the multiplier of the positive fixed point reaches \(-1\), causing a flip bifurcation. After this point, the fixed point becomes unstable and a stable period-2 cycle appears.
+As \(\lambda\) increases further, the stable period-2 cycle also loses stability, producing a stable period-4 cycle. This period-doubling process continues, creating cycles of period \(2,4,8,\dots\). These bifurcations become closer together as \(\lambda\) increases, which is why the bifurcation diagram begins to show a tree-like structure. Eventually the repeated period-doubling behavior leads into chaotic dynamics, where nearby initial conditions can separate rapidly and the orbit no longer settles into a simple repeating cycle.
+Cycles of period 3 can also be found numerically for some values of \(\lambda\). Their appearance is important because the presence of a period-3 cycle is a strong sign of complicated or chaotic behavior. In the numerical experiments, I located low-period cycles by iterating the map many times, discarding the first several hundred transient values, and then checking whether the remaining orbit repeated after 2, 3, or 4 steps.
+Overall, the periodic structure follows the same pattern seen in the bifurcation diagram: first a stable fixed point, then a stable period-2 cycle, then a stable period-4 cycle, and then increasingly complicated periodic and chaotic behavior as \(\lambda\) increases.
 
 % ----- 5. Bifurcation analysis and the period-doubling cascade -----
 \subsection{Bifurcation analysis and the period-doubling cascade}
