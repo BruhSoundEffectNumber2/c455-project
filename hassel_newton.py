@@ -111,7 +111,7 @@ def newton_super_stable(k, lam_guess,
 
         if not math.isfinite(xN):
             # Orbit blew up at current lambda -- pull back toward seed.
-            lam = 0.5 * (lam + lam_guess)
+            # lam = 0.5 * (lam + lam_guess)
             if verbose:
                 print(f"  iter {it}: blow-up; retreat to lam = {lam:.6f}")
             continue
@@ -125,16 +125,17 @@ def newton_super_stable(k, lam_guess,
 
         # Raw Newton correction, capped.
         delta = g / gp
-        if abs(delta) > step_cap:
-            delta = math.copysign(step_cap, delta)
+        # if abs(delta) > step_cap:
+        #     delta = math.copysign(step_cap, delta)
 
         # Try the step; backtrack if it produces a divergent or wildly
         # worse orbit.
         damping = 1.0
-        accepted = False
+        accepted = True
         for _ in range(20):
             lam_try = lam - damping * delta
             xN_try, _ = critical_orbit(lam_try, N, b)
+            break
             if math.isfinite(xN_try) and abs(xN_try - x0) < 10 * (abs(g) + 1.0):
                 accepted = True
                 break
@@ -175,13 +176,14 @@ def feigenbaum_table(K=10, b=6.0,
     s = [None]
     s.append((1.0 + x0)**b)                                          # s_1
     s.append(newton_super_stable(2, s2_seed, b=b))                   # s_2
-    s.append(newton_super_stable(3, s3_seed, b=b, step_cap=s3_step_cap))  # s_3
+    s.append(newton_super_stable(3, s3_seed, b=b, step_cap=10000000))  # s_3
 
     delta = 4.0  # rough starting estimate for the Feigenbaum constant
     for k in range(3, K):
         seed = s[k] + (s[k] - s[k-1]) / delta
-        cap = max(0.05, 1.0 / 2**(k - 3))   # tighter cap for larger k
-        nxt = newton_super_stable(k+1, seed, b=b, step_cap=cap, max_iter=400)
+        # cap = max(0.05, 1.0 / 2**(k - 3))   # tighter cap for larger k
+        cap = 10000000
+        nxt = newton_super_stable(k+1, seed, b=b, step_cap=10000000, max_iter=400)
         if nxt is None:
             print(f"  bootstrap failed at k+1 = {k+1}")
             break
@@ -216,7 +218,7 @@ if __name__ == "__main__":
 
     # Sanity test on s_1: must match the analytic value (b/(b-1))^b.
     print("=== sanity test: s_1 ===")
-    s1_numeric = newton_super_stable(1, 3.0, b=b, verbose=True)
+    s1_numeric = newton_super_stable(1, 3.0, b=b, verbose=True, step_cap=10000000)
     s1_analytic = (1.0 + x0)**b
     print(f"  Newton:    s1 = {s1_numeric:.13f}")
     print(f"  analytic:  s1 = {s1_analytic:.13f}")
