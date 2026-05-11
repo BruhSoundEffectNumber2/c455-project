@@ -323,18 +323,35 @@ While we discussed the bifurcation diagram and route to choas, we have not discu
 The chaotic regime continues indefinitely past the accumulation point, but there are several periodic windows. Period 6 windwos are the most common, happening at $\lambda \approx 27$ and $\lambda \approx 34$. There is also a period 3 window starting near $\lambda \approx 47$. This window is particularly interesting, as it clearly implies chaotic behavior inherent to the map, which matches the chaotic behavior we see in the bifurcation diagram and in the Lyapunov exponent plot, which we will discuss next. The behavior of the bifurcation diagram remains unchanged past this point, with a mixture of chaotic and periodic behavior.
 
 % ----- 7. Lyapunov exponents -----
-\subsection{Lyapunov exponents}
-
-\instr{Compute the Lyapunov exponent $\lambda(a)$ as a function of the
-bifurcation parameter $a$ and plot it alongside (or aligned with) your
-orbit diagram. Discuss what the sign of $\lambda$ tells you, where $\lambda$
-crosses zero, and how the Lyapunov plot corroborates---and refines---the
-picture given by the orbit diagram. How well do the zeros of $\lambda(a)$
-correspond to the bifurcation values you identified?
-\textbf{Be careful with your language}: a positive Lyapunov exponent is a
-strong indicator of sensitive dependence on initial conditions, but is not,
-by itself, a definition of chaos.
-\textbf{Delete this instruction before submitting.}}
+\subsection{Lyapunov exponent}
+To compare with the bifurcation diagram, we also computed the Lyapunov exponent for different values of \(\lambda\). We used the derivative of Hassell's map and averaged the log of the absolute value of the derivative over many iterations:
+\[
+L(\lambda)=\frac{1}{N}\sum_{i=1}^{N}\log\left|F'_\lambda(x_i)\right|.
+\]
+The Lyapunov exponent helps show whether nearby starting values stay close together or separate over time. When \(L(\lambda)<0\), nearby points tend to stay closer together, so the behavior is usually stable. This matches the areas of the bifurcation diagram where the orbit settles into a fixed point or a stable orbit.
+When \(L(\lambda)>0\), nearby points tend to drift apart. This is a strong sign of sensitive dependence on initial conditions, which is one of the main indicators of chaotic behavior.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\linewidth]{figures/big_lyap_exp_150.png}
+  \caption{Bifurcation diagram alongside Lyapunov exponent for $H(x)$. The top graph shows the bifucation diagram previously displayed, and the bottom is the Lyapunov exponent at the same values of \(\lambda\).}
+  \label{fig:big_lyap_exp_150}
+\end{figure}
+As shown in Figure~\ref{fig:big_lyap_exp_150}, the Lyapunov exponent lines up with the main changes in the bifurcation diagram. The first important "bounce" happens near
+\[
+\lambda \approx 9.313,
+\]
+which is where the stable fixed point becomes a period-2 cycle. The next major near-zero values happen near the later period-doubling values, including
+\[
+\lambda \approx 18.91,
+\]
+where the period-4 cycle begins, and about
+\[
+\lambda \approx 22.91,
+\]
+where the period-4 cycle ends and the rapid period doubling begins.
+The Lyapunov graph is useful because some changes are hard to see clearly from the bifurcation diagram alone. As \(\lambda\) increases, the branches get closer together and become harder to separate qualitatively. The Lyapunov exponent makes these transition points easier to identify because it nears zero near bifurcations.
+The graph also shows that the chaotit regime does not necessarily have the same Lyapunov exponent. There are places where the exponent is positive, suggesting sensitive dependence on initial conditions. However, there are also periodic windows where the exponent drops back below zero. This matches the bifurcation diagram, where scattered points sometimes collapse back into a small stable window, normally with a 3-orbit.
+Overall, the Lyapunov exponent supports the pattern shown in the bifurcation diagram. Negative values match stable fixed points and stable cycles, zero values appear near bifurcations, and positive values correspond to regions where the behavior becomes much more sensitive to initial conditions.
 
 % ----- 8. Histograms -----
 \subsection{Histograms (frequency distributions)}
