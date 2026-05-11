@@ -73,7 +73,7 @@ across all subsections. \textbf{Delete this instruction before submitting.}}
 % ----- 1. The map and its phase space -----
 \subsection{The map and its phase space}
 
-As described before, the formal equation for the map is:$$H(x) = \frac{\lambda x}{\left( x + 1 \right)^\beta}, \, x \geq 0, \, \lambda \geq 0, \, \beta \geq 0$$
+As described before, the formal equation for the map is:$$H(x) = \frac{\lambda x}{\left( x + 1 \right)^\beta}, \, x \geq 0, \, \lambda \geq 0, \, \beta \geq 1$$
 
 We set $\beta = 10$, and set the parameter $0 \leq \lambda \leq 140$. The map has exactly 1 critical point at $x = \frac{1}{\beta - 1} = \frac{1}{9}$, and is unimodal when $\lambda > 1$. The map is smooth and continuous, and has no symmetries. The range of the map is bounded based on the value of $\lambda$, and the map is non-negative for all $x \geq 0$. The map asymptotically approaches $0$ as $x \to \infty$. We show an illustration of the map in Figure~\ref{fig:map_l5}.
 
@@ -151,125 +151,34 @@ Past this point, the map quickly undergoes a period-doubling cascade, and chaoti
 
 % ----- 3. Fixed points and stability -----
 \subsection{Fixed points and their stability}
-For Hassell's map,
+For the Hassell map, fixed points satisfy $H(x)=x$. This gives: $$\frac{\lambda x}{(1+x)^\beta}=x.$$
+One fixed point is always $\bar{x}=0$. For $x\neq 0$, we can divide by $x$, giving $\frac{\lambda}{(1+x)^\beta}=1$. Therefore, $(1+x)^\beta=\lambda$, and the positive fixed point is $\bar{x}=\lambda^{1/\beta}-1$.
+This fixed point only exists when $\lambda>1$, since otherwise it is not positive. To classify the stability of these fixed points, we compute the derivative:
 \[
-F_\lambda(x)=\frac{\lambda x}{(1+x)^\beta},
-\]
-fixed points satisfy
-\[
-F_\lambda(x)=x.
-\]
-This gives
-\[
-\frac{\lambda x}{(1+x)^\beta}=x.
-\]
-One fixed point is always
-\[
-\bar{x}=0.
-\]
-For \(x\neq 0\), we can divide by \(x\), giving
-\[
-\frac{\lambda}{(1+x)^\beta}=1.
-\]
-Therefore,
-\[
-(1+x)^\beta=\lambda,
-\]
-so the positive fixed point is
-\[
-\bar{x}=\lambda^{1/\beta}-1.
-\]
-This fixed point only exists when \(\lambda>1\), since otherwise it is not positive. To classify the stability of these fixed points, we compute the derivative:
-\[
-F'_\lambda(x)=
+H'(x)=
 \frac{\lambda(1+(1-\beta)x)}{(1+x)^{\beta+1}}.
 \]
-At the fixed point \(\bar{x}=0\),
-\[
-F'_\lambda(0)=\lambda.
-\]
-Therefore, \(x=0\) is attracting when
-\[
-|\lambda|<1,
-\]
-repelling when
-\[
-|\lambda|>1,
-\]
-and neutral when
-\[
-|\lambda|=1.
-\]
-Since we are mainly considering positive \(\lambda\), the origin is attracting for \(0<\lambda<1\), neutral at \(\lambda=1\), and repelling for \(\lambda>1\).
-At the positive fixed point
-\[
-\bar{x}=\lambda^{1/\beta}-1,
-\]
-the derivative simplifies to
-\[
-F'_\lambda(\bar{x})
-=
-1-\beta+\beta\lambda^{-1/\beta}.
-\]
-Therefore, this fixed point is attracting when
-\[
-\left|1-\beta+\beta\lambda^{-1/\beta}\right|<1.
-\]
-For \(\beta>2\), this means the positive fixed point is attracting for
-\[
-1<\lambda<\left(\frac{\beta}{\beta-2}\right)^\beta.
-\]
-At
-\[
-\lambda=\left(\frac{\beta}{\beta-2}\right)^\beta,
-\]
-the derivative reaches \(-1\), the fixed point changes from stable to unstable. This is the first period-doubling point: after this, the orbit no longer settles to one value, but instead settles into a 2-orbit. For \(\beta = 10\), this happens at approximately
-\[
-\lambda=\left(\frac{10}{8}\right)^{10}\approx 9.313.
-\]
-So in the bifurcation diagram, the positive fixed point is stable for
-\[
-1<\lambda<9.313,
-\]
-and becomes unstable after that. At \(\lambda\approx 9.313\), the first period-doubling bifurcation occurs.
-The fixed-point structure changes as follows: for \(0<\lambda<1\), only \(x=0\) is stable. At \(\lambda=1\), a positive fixed point is born from the origin. For \(1<\lambda<9.313\), the positive fixed point is attracting and the origin is repelling. At approximately \(\lambda=9.313\), the positive fixed point loses stability and a stable period-2 cycle appears.
+At the fixed point $\bar{x}=0$, $H'(0)=\lambda$. Therefore, $x=0$ is attracting when $|\lambda| < 1$, repelling when $|\lambda| > 1$, and neutral when $|\lambda| = 1$.
+Because $\lambda \ge 0$, the origin is attracting for $0<\lambda<1$, neutral at $\lambda=1$, and repelling for $\lambda>1$.
+
+At the positive fixed point $\bar{x}=\lambda^{1/\beta}-1$, the derivative simplifies to
+$H'(\bar{x}) = 1-\beta+\beta\lambda^{-1/\beta}$. Therefore, this fixed point is attracting when $\left|1-\beta+\beta\lambda^{-1/\beta}\right|<1$. For $\beta>2$, this means the positive fixed point is attracting for $1<\lambda<\left(\frac{\beta}{\beta-2}\right)^\beta$. At $\lambda=\left(\frac{\beta}{\beta-2}\right)^\beta$,
+the derivative reaches $-1$, the fixed point changes from stable to unstable. This is the first period-doubling point: after this, the orbit no longer settles to one value, but instead settles into a 2-cycle. For $\beta = 10$, this happens at approximately $\lambda=\left(\frac{10}{8}\right)^{10}\approx 9.313$.
 
 % ----- 4. Periodic points and stability of cycles -----
 \subsection{Periodic points and stability of cycles}
-I found the periodic cycles mainly from the bifurcation diagrams and numerical checks, rather than solving for the exact cycle values by hand. The first bifurcation occurs near
-\[
-\lambda \approx 9.313
-\]
-Before this value, the positive fixed point is stable. After this, the diagram splits into two branches, which is the stable period-2 cycle.
-The period-2 cycle stays stable until approx.
-\[
-\lambda \approx 18.91
-\]
-At this point, the period-2 cycle becomes unstable and splits into a period-4 cycle. The period-4 cycle then stays stable until about
-\[
-\lambda \approx 22.91
-\]
-After that, it splits again into a period-8 cycle. This continues the same period-doubling pattern seen in the bifurcation diagram.
-Period-3 behavior appears later, after the diagram has already become chaotic in small windows of stability. One example of a stable period-3 window occurs around
-\[
-\lambda = 50
-\]
-For this value, a numerical period-3 cycle is approximately
+We found the periodic cycles mainly from the bifurcation diagrams and numerical checks, rather than solving for the exact cycle values by hand. The first bifurcation occurs near $\lambda \approx 9.313$. The period-2 cycle stays stable until $\lambda \approx 18.91$. This marks the bifurcation into the 4-cycle. The period-4 cycle then stays stable until $\lambda \approx 22.91$.
+Afterwards, it splits again into a period-8 cycle. This period-doubling cascade continues further.
+
+A period-3 window appears later, after the diagram has entered the chaotic regime. One example of a stable period-3 window occurs around$\lambda = 50$. For this value, a numerical period-3 cycle is approximately
 \[
 x_0 \approx 0.00207,\quad
 x_1 \approx 0.10137,\quad
 x_2 \approx 1.92995
 \]
-To check its stability, I multiplied the derivative values at these three points:
-\[
-F'_\lambda(x_0)F'_\lambda(x_1)F'_\lambda(x_2)
-\approx -0.436
-\]
-Since
-\[
-|-0.436|<1,
-\]
-this period-3 cycle is stable. This matches the diagram because the scattered chaotic-looking points briefly collapse into three clear branches in that window.
+To check its stability, We multiplied the derivative values at these three points together:
+$H'(x_0)H'(x_1)H'(x_2) \approx -0.436$. Since $|-0.436|<1$, this period-3 cycle is stable. This matches the bifurcation diagram, which shows a stable period-3 window around $\lambda = 50$.
+
 % ----- 5. Bifurcation analysis and the period-doubling cascade -----
 \subsection{Bifurcation analysis and the period-doubling cascade}
 
@@ -440,13 +349,8 @@ Frontiers of Science}, 2nd ed., Springer, 2004.
 
 % ============================================================
 \appendix
-\section{Code listings (optional)}
+\section{Code listings}
 
-\instr{Include any code, lengthy derivations, or supplementary figures here.
-The submitted code archive is the primary deliverable for reproducibility;
-the appendix is for selected listings that the reader might want to consult
-without leaving the document. \textbf{Delete this instruction before
-submitting, or remove this appendix entirely if you have no supplementary
-material.}}
+Our complete code and document \LaTeX can be found on our GitHub repository: \url{https://github.com/BruhSoundEffectNumber2/c455-project}.
 
 \end{document}
