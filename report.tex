@@ -236,50 +236,40 @@ The fixed-point structure changes as follows: for \(0<\lambda<1\), only \(x=0\) 
 
 % ----- 4. Periodic points and stability of cycles -----
 \subsection{Periodic points and stability of cycles}
-Periodic points are points that return to themselves after repeated iterations of the map. A point has period \(n\) if
+I found the periodic cycles mainly from the bifurcation diagrams and numerical checks, rather than solving for the exact cycle values by hand. The first bifurcation occurs near
 \[
-F_\lambda^n(x)=x,
+\lambda \approx 9.313
 \]
-but
+Before this value, the positive fixed point is stable. After this, the diagram splits into two branches, which is the stable period-2 cycle.
+The period-2 cycle stays stable until approx.
 \[
-F_\lambda^k(x)\neq x
+\lambda \approx 18.91
 \]
-for all smaller positive integers \(k<n\).
-For Hassell's map, exact formulas for higher-period cycles are difficult to obtain, so I located cycles numerically. The stability of a period-\(n\) cycle
+At this point, the period-2 cycle becomes unstable and splits into a period-4 cycle. The period-4 cycle then stays stable until about
 \[
-x_0,x_1,\dots,x_{n-1}
+\lambda \approx 22.91
 \]
-is determined using the multiplier
+After that, it splits again into a period-8 cycle. This continues the same period-doubling pattern seen in the bifurcation diagram.
+Period-3 behavior appears later, after the diagram has already become chaotic in small windows of stability. One example of a stable period-3 window occurs around
 \[
-\mu=\prod_{j=0}^{n-1}F'_\lambda(x_j).
+\lambda = 50
 \]
-The cycle is attracting if
+For this value, a numerical period-3 cycle is approximately
 \[
-|\mu|<1,
+x_0 \approx 0.00207,\quad
+x_1 \approx 0.10137,\quad
+x_2 \approx 1.92995
 \]
-repelling if
+To check its stability, I multiplied the derivative values at these three points:
 \[
-|\mu|>1,
+F'_\lambda(x_0)F'_\lambda(x_1)F'_\lambda(x_2)
+\approx -0.436
 \]
-and neutral if
+Since
 \[
-|\mu|=1.
+|-0.436|<1,
 \]
-Using
-\[
-F'_\lambda(x)=
-\frac{\lambda(1+(1-\beta)x)}{(1+x)^{\beta+1}},
-\]
-the multiplier for each detected cycle can be computed by multiplying the derivative at each point of the cycle.
-The first major periodic behavior occurs when the positive fixed point loses stability. For \(\beta=10\), this happens near
-\[
-\lambda\approx 9.313.
-\]
-At this value, the multiplier of the positive fixed point reaches \(-1\), causing a flip bifurcation. After this point, the fixed point becomes unstable and a stable period-2 cycle appears.
-As \(\lambda\) increases further, the stable period-2 cycle also loses stability, producing a stable period-4 cycle. This period-doubling process continues, creating cycles of period \(2,4,8,\dots\). These bifurcations become closer together as \(\lambda\) increases, which is why the bifurcation diagram begins to show a tree-like structure. Eventually the repeated period-doubling behavior leads into chaotic dynamics, where nearby initial conditions can separate rapidly and the orbit no longer settles into a simple repeating cycle.
-Cycles of period 3 can also be found numerically for some values of \(\lambda\). Their appearance is important because the presence of a period-3 cycle is a strong sign of complicated or chaotic behavior. In the numerical experiments, I located low-period cycles by iterating the map many times, discarding the first several hundred transient values, and then checking whether the remaining orbit repeated after 2, 3, or 4 steps.
-Overall, the periodic structure follows the same pattern seen in the bifurcation diagram: first a stable fixed point, then a stable period-2 cycle, then a stable period-4 cycle, and then increasingly complicated periodic and chaotic behavior as \(\lambda\) increases.
-
+this period-3 cycle is stable. This matches the diagram because the scattered chaotic-looking points briefly collapse into three clear branches in that window.
 % ----- 5. Bifurcation analysis and the period-doubling cascade -----
 \subsection{Bifurcation analysis and the period-doubling cascade}
 
