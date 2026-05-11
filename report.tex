@@ -60,16 +60,6 @@ When calculating the Lyapunov exponent, the Schwarzian derivatve, and superstabl
 % ============================================================
 \section{Results}
 
-\instr{Present your findings, organized so that a reader can follow the
-logical progression from the geometry of the map, to fixed points, to
-bifurcations, to orbit diagrams and Lyapunov spectra, to symbolic dynamics
-and conjugacy. The subsections below correspond to the eleven required
-analyses in the project guidelines. Adjust the headings to fit your map and
-your story, but address each item somewhere in this section. Use figures,
-tables, and equations liberally and refer to them in the text (e.g.
-``Figure~\ref{fig:bif} shows\ldots''). Aim for roughly 1{,}000--1{,}500 words
-across all subsections. \textbf{Delete this instruction before submitting.}}
-
 % ----- 1. The map and its phase space -----
 \subsection{The map and its phase space}
 
@@ -290,28 +280,33 @@ An analyical calculation of the Schwarzian derivative is likely possible, but wa
 
 % ----- 11. Creative element -----
 \subsection{A creative element}
-For our creative element, we focused on a part of the bifurcation diagram that looked simple at first but became more interesting when we looked closer. Our question was:
-\[
-\text{What hidden structure appears near the lower branch of the bifurcation diagram that approaches zero?}
-\]
-We were very confused as in a few windows there appeared to be a period-5 orbit, which made no sense, so we took a closer look and it seemed that one of the branches wasn't bifurcating when the others were.
-In the full bifurcation diagram, the lower part can look like one branch moving closer and closer to \(0\). At first, it almost looks like the orbit was simply trending downward. However, when we zoomed in on this region, it became clear that this was not just one smooth branch. It was made of several smaller branches and repeated bifurcations that were compressed near the bottom of the graph.
+For our creative element, we focused on a part of the bifurcation diagram that looked simple at first, but became more interesting when we looked closer. Our question was: What hidden structure appears near the lower branch of the bifurcation diagram that approaches zero?
+
+While first investigating the bifurcation diagram, we were confused by a few window of an apparent period-5 cycle, which made little sense. From this, we investigated further into the region. It seemed that one branch was not splitting as it should. The lower part looked like one branch moving closer and closer to \(0\). At first, it almost looks like the orbit was simply trending downward. 
+
+However, when we zoomed in on this region, it became clear that this was not just one smooth branch. It was made of several smaller branches and repeated bifurcations that were compressed near the bottom of the graph.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{figures/zoomed_bif.png}
     \caption{Zoomed-in view of the lower branch of the bifurcation diagram.}
     \label{fig:zoomed_bif}
 \end{figure}
-Figure~\ref{fig:zoomed_bif} shows that the lower branch is visually misleading. From far away, the different branches are so close together that they blend into one line. But when zoomed in, they are actually separate values. Some of these branches continue downward toward \(0\), while others split away and return to larger \(x\)-values. This makes the lower region look less like one curve and more like a small tree structure.
-We also compared this zoomed-in bifurcation region with the Lyapunov exponent over the same range of \(\lambda\)-values. This was useful because the bifurcation diagram shows where the period doubled and when the orbit drifted into chaos.
+
+Figure~\ref{fig:zoomed_bif} shows that the lower branch is visually misleading. Some of these branches continue downward toward $0$, while others split away and return to larger values.
+
+We also compared this zoomed-in bifurcation region with the Lyapunov exponent over the same range of $\lambda$-values. This was to support the idea that this region is not just smoothly approaching $0$, but is still moving through different types of behavior in the same way, just at a smaller scale.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{figures/zoomed_lyap_exp.png}
     \caption{Zoomed-in Lyapunov exponent over the lower region.}
     \label{fig:zoomed_lyap_exp}
 \end{figure}
-The Lyapunov graph supports the idea that this region is not just smoothly approaching \(0\). Instead, the exponent changes across the range, showing that the map is still moving through different types of behaviors. Some parts appear to be stable while others are quite clearly chaotic.
-Overall, our answer is that the lower branch is not really one branch. It is a compressed collection of smaller branches and bifurcations. Many of these branches appear to approach \(0\), while some break away and return to higher values. The zoomed bifurcation diagram shows the hidden structure, and the zoomed Lyapunov graph helps confirm that this region still displays changes in stability.
+
+We note in particular that there is an extremely clear fractal-like structure apparent in the zoomed-in bifurcation diagram, which is supported by the Lyapunov exponent. A period doubling route to chaos exists in this region as the 6-cycle ends, and there is even a small period-3 window visible.
+
+Furthermore, we believe that the compression of the map near $0$ is related to the asymptotic behavior of the map as $x \to \infty$. We hypothesize that there are more values where the orbit is able to get very close to $0$, which is why there are so many branches and bifurcations compressed in this region. This is supported by our various bifurcation diagrams, cobweb diagrams, and histograms, which all show denser regions of points near $0$ in nearly all cases.
 
 % ============================================================
 \section{Discussion}
